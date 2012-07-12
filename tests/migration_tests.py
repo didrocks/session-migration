@@ -20,6 +20,7 @@
 import configparser
 import json
 import os
+import re
 import shutil
 import stat
 import subprocess
@@ -199,9 +200,11 @@ class MigrationTests(unittest.TestCase):
         os.remove(new_script)
 
         # check the debug output
-        self.assertEqual(stdout, "Using '{}' directory\nFile '10_test.sh already migrated, skipping\nFile '02_test.sh already migrated, skipping\n"
-                                 "File '01_test.sh already migrated, skipping\nExecuting: {}\nExecuting: {}\n".format(self.script_path, os.path.join(self.script_path, '08_test.sh'),
-                                                                                                                      os.path.join(self.script_path, '08_testexecute.sh')))
+        self.assertTrue(re.match("Using '{}' directory\nFile '{files}_test.sh already migrated, skipping\nFile '{files}_test.sh already migrated, skipping\n"
+                                 "File '{files}_test.sh already migrated, skipping\nExecuting: {}\nExecuting: {}\n".format(self.script_path, os.path.join(self.script_path, '08_test.sh'),
+                                                                                                                      os.path.join(self.script_path, '08_testexecute.sh'),
+                                                                                                                      files='(01|02|10)'),
+                        stdout))
         self.assertEqual(stderr, 'Failed to execute child process "{}" (Permission denied)\nstdout: (null)\nstderr: (null)\n'.format(os.path.join(self.script_path, '08_test.sh')))
 
         # inverse the condition to ensure only the latest copied script has been executed
