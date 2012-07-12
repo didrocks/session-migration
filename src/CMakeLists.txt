@@ -6,3 +6,4 @@ link_libraries (${LIBS})
 
 add_executable (session-migration session-migration.c) 
 
+install(TARGETS session-migration DESTINATION bin)

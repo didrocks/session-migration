@@ -140,6 +140,25 @@ class MigrationTests(unittest.TestCase):
         # ensure that the scripts are stamped as migrated
         self.assertEqual(self.config.get('State', 'migrated'), '01_test.sh;02_test.sh;10_test.sh;')
 
+    def test_migration_with_dry_run(self):
+        '''Test that the migration claimed to happen as expected in dry run mode'''
+        (stdout, stderr) = (self.run_migration(additional_params=["--dry-run"]))
+
+        # ensure scripts are executed in the right order
+        self.assertEqual(stdout, "Using '{}' directory\nExecuting: {}\nExecuting: {}\nExecuting: {}\nExecuting: {}\n".format(
+                                 self.script_path, os.path.join(self.script_path, '01_test.sh'), os.path.join(self.script_path, '02_test.sh'),
+                                 os.path.join(self.script_path, '08_test.sh'), os.path.join(self.script_path, '10_test.sh')))
+
+        # ensure scripts 8 is not executed (and so no failure)
+        self.assertEqual(stderr, '')
+
+        # ensure that the script have indeed not be run
+        for output_file in self.output_files:
+            self.assertFalse(os.path.isfile(output_file))
+
+        # ensure that the scripts are not marked as done
+        self.assertFalse(os.path.isfile(self.migration_home_file))
+
     def test_subsequent_runs_no_effect(self):
         '''Test that subsequent runs doesn't have any effect'''
         (stdout, stderr) = (self.run_migration())
