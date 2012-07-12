@@ -6,6 +6,7 @@ Build-Depends: debhelper (>= 9.0.0),
                cmake (>= 2.8),
                libglib2.0-dev,
                python3,
+               python3-nose,
 Standards-Version: 3.9.3
 Homepage: https://launchpad.net/session-migration
 Vcs-Bzr: http://code.launchpad.net/~ubuntu-desktop/session-migration/trunk

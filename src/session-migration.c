@@ -82,6 +82,7 @@ migrate_from_dir (const gchar *dirname,
   GSList *migration_scripts = NULL;
   GSList *current_script;
   GError *error;
+  *changed = FALSE;
 
   /* If the directory is not newer, exit */
   if (stat (dirname, &statbuf) == 0)
