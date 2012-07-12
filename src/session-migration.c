@@ -1,11 +1,11 @@
-// gcc -o session session-migration.c `pkg-config --cflags --libs gio-2.0 glib-2.0`
 /*
  * Copyright (C) 2010 Red Hat, Inc.
  * Copyright (C) 2012 Canonical
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; version 3.
+ * License as published by the Free Software Foundation; either
+ * version 3 of the Licence, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
