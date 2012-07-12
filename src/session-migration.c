@@ -5,8 +5,7 @@
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License.
+ * License as published by the Free Software Foundation; version 3.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -56,6 +55,9 @@ migrate_from_file (const gchar *script_path)
 
   if (verbose)
     g_print ("Executing: %s\n", script_path);
+
+  if (dry_run)
+    return TRUE;
 
   if (!g_spawn_command_line_sync(script_path, &stdout, &stderr, &exit_status, &error) || (exit_status != 0))
     {
