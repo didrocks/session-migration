@@ -77,7 +77,7 @@ class MigrationTests(unittest.TestCase):
     def run_migration(self, command=None, verbose=True, additional_params=None):
         '''helper to run migration tool'''
         if not command:
-            command = ['./src/session']
+            command = ['./src/session-migration']
         if verbose:
             command.append('--verbose')
         if additional_params:
