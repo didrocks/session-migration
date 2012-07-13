@@ -139,10 +139,12 @@ migrate_from_dir (const gchar *dirname,
           *changed = TRUE;
         }
 
-      g_free(filename);
+      g_free (filename);
     } while ((current_script = g_slist_next(current_script)) != NULL);
     g_slist_free (migration_scripts);
   }
+  
+  g_dir_close (dir);
 
   return TRUE;
 }
@@ -205,17 +207,22 @@ load_state (time_t *mtime)
   migrated = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
 
   filename = get_migration_filename();
-  keyfile = g_key_file_new();
 
   /* ensure file exists */
   if (!g_file_test (filename, G_FILE_TEST_EXISTS))
-    return migrated;
+    {
+      g_free (filename);
+      return migrated;
+    }
 
   error = NULL;
+  keyfile = g_key_file_new();
   if (!g_key_file_load_from_file (keyfile, filename, 0, &error))
     {
       g_printerr ("%s: %s\n", filename, error->message);
       g_error_free (error);
+      g_key_file_free (keyfile);
+      g_free (filename);
       return migrated;
     }
 
@@ -347,8 +354,11 @@ main (int argc, char *argv[])
 
       migration_dir = g_build_filename (data_dirs[i], "session-migration", "scripts", NULL);
 
-      if (!migrate_from_dir (migration_dir, stored_mtime, migrated, &changed_in_dir))
+      if (!migrate_from_dir (migration_dir, stored_mtime, migrated, &changed_in_dir)) {
+        g_free (migration_dir);
+        g_hash_table_destroy (migrated);
         return 1;
+      }
       changed = changed | changed_in_dir;
 
       g_free (migration_dir);
@@ -357,9 +367,12 @@ main (int argc, char *argv[])
   if (changed && !dry_run)
     {
       if (!save_state (migrated))
+      {
+        g_hash_table_destroy (migrated);
         return 1;
+      }
     }
-  g_free(migrated);
+  g_hash_table_destroy (migrated);
 
   return 0;
 }

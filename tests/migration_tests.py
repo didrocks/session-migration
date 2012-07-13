@@ -167,11 +167,13 @@ class MigrationTests(unittest.TestCase):
         self.assertNotEqual(stdout, '')
         self.assertNotEqual(stderr, '')
         self.assertTrue(os.path.isfile(self.migration_home_file))
-        home_file = open(self.migration_home_file).read()
+        with open(self.migration_home_file) as f:
+            home_file = f.read()
         (stdout, stderr) = (self.run_migration())
         self.assertEqual(stdout, "Directory '{}' all uptodate, nothing to do\n".format(self.script_path))
         self.assertEqual(stderr, '')
-        second_home_file = open(self.migration_home_file).read()
+        with open(self.migration_home_file) as f:
+            second_home_file = f.read()
         self.assertEqual(home_file, second_home_file)
 
     def test_subsequent_runs_with_new_script(self):
