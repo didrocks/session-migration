@@ -21,3 +21,11 @@ Description: Tool to migrate in user session settings
  .
  This program is generally autostarted at the very beginning of the session
  and integrates caching capability.
+
+Package: dh-migrations
+Architecture: all
+Depends: ${misc:Depends},
+         debhelper,
+Description: debhelper extension for session-migration support
+ This package provides a debhelper extension to perform session migration
+ operations on the installed packaged.
