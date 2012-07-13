@@ -43,9 +43,9 @@ class DebhelperTests(unittest.TestCase):
         shutil.copy('debhelper/migrations.pm', d)
         env['PERLLIB'] = '%s:%s' % (self.workdir, env.get('PERLLIB', ''))
 
-        # make dh_installmigrations available in $PATH
-        shutil.copy('debhelper/dh_installmigrations',
-                    os.path.join(self.workdir, 'dh_installmigrations'))
+        # make dh_migrations available in $PATH
+        shutil.copy('debhelper/dh_migrations',
+                    os.path.join(self.workdir, 'dh_migrations'))
         env['PATH'] = self.workdir + ':' + env.get('PATH', '')
         self.env = env
 
@@ -63,7 +63,7 @@ class DebhelperTests(unittest.TestCase):
         '''build the package with migration argument'''
 
         stdout = self.buildpackage(self.env)
-        self.assertTrue("dh_installmigrations" in stdout)
+        self.assertTrue("dh_migrations" in stdout)
 
         # check the scripts are installed and executable
         scripts_path = os.path.join(self.pkgdir, 'debian/vanilla/usr/share/session-migration/scripts')
@@ -77,7 +77,7 @@ class DebhelperTests(unittest.TestCase):
         '''ensure assert when there is a typo in the script path or doesn't exist'''
         os.remove(os.path.join(self.pkgdir, "script1.sh"))
         stdout = self.buildpackage(self.env)
-        self.assertTrue("dh_installmigrations: install -p -m755 script1.sh debian/vanilla/usr/share/session-migration/scripts returned exit code 1" in stdout)
+        self.assertTrue("dh_migrations: install -p -m755 script1.sh debian/vanilla/usr/share/session-migration/scripts returned exit code 1" in stdout)
 
 
 if __name__ == '__main__':

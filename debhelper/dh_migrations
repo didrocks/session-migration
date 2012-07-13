@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-dh_installmigrations - install session migration files into package build directories
+dh_migrations - install session migration files into package build directories
 
 =cut
 
@@ -12,7 +12,7 @@ use Debian::Debhelper::Dh_Lib;
 
 =head1 SYNOPSIS
 
-B<dh_installmigrations> [S<B<debhelper options>>] [B<-n>]
+B<dh_migrations> [S<B<debhelper options>>] [B<-n>]
 
 =head1 DESCRIPTION
 
