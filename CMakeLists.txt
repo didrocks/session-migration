@@ -6,7 +6,7 @@ pkg_check_modules (CACHED_SESSIONMIGRATION_DEPS REQUIRED "glib-2.0;gio-2.0")
 
 add_subdirectory(src)
 
-file(COPY tests
+file(COPY debhelper tests
      DESTINATION ${PROJECT_BINARY_DIR})
 add_custom_target(check
                   COMMAND nosetests3

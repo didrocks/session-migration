@@ -1,0 +1,12 @@
+Source: melticecream
+Section: utils
+Priority: extra
+Maintainer: Joe User <joe@example.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.3
+
+Package: vanilla
+Architecture: all
+Description: vanilla
+ vanilla
+
