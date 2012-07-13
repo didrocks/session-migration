@@ -65,7 +65,7 @@ foreach my $package (@{$dh{DOPACKAGES}}) {
 =head1 SEE ALSO
 
 L<debhelper(7)>
-L<session-migrations(1)>
+L<session-migration(1)>
 
 =head1 AUTHOR
 
