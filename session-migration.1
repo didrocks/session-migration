@@ -9,7 +9,7 @@ session-migration \- Migrate in user session settings.
 .br
 
 .SH DESCRIPTION
-The \fBsession-migration\fP program can be used to migrate in session user data when a program is evolving its configuration, or needing to have files moved and so on. This program is generally autostarted at the very beginning of the session and integrates caching capabilities.
+The \fBsession-migration\fP program can be used to migrate in-session user data when a program is evolving its configuration, or needing to have files moved and so on. This program is generally autostarted at the very beginning of the session and integrates caching capabilities.
 
 The general usage is to ship an executable file in XDG_DATA_DIR/session-migration/scripts. This one will be executed the next time the user log into the session. It will executes all executable files there in ascii order, one after another.
 

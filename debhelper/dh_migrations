@@ -69,7 +69,7 @@ L<session-migrations(1)>
 
 =head1 AUTHOR
 
-Martin Pitt <didrocks@ubuntu.com>
+Didier Roche <didrocks@ubuntu.com>
 
 Copyright (C) 2012 Canonical Ltd., licensed under the GNU GPL v3 or later.
 
