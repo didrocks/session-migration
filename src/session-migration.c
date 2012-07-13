@@ -328,6 +328,7 @@ main (int argc, char *argv[])
       g_printerr ("%s\n", error->message);
       return 1;
     }
+  g_option_context_free (context);
 
   migrated = load_state (&stored_mtime);
 
@@ -358,6 +359,7 @@ main (int argc, char *argv[])
       if (!save_state (migrated))
         return 1;
     }
+  g_free(migrated);
 
   return 0;
 }
