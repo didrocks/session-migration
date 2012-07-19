@@ -1,11 +1,11 @@
-session-migration (0.2) UNRELEASED; urgency=low
+session-migration (0.2) quantal; urgency=low
 
   * dh_migrations adds a dependency using ${misc:Depends} on the packages
     using a migration
   * add a second binary packages for test and making additional checks
   * fix a typo in the man
 
- -- Didier Roche <didrocks@ubuntu.com>  Thu, 19 Jul 2012 16:40:31 +0200
+ -- Didier Roche <didrocks@ubuntu.com>  Thu, 19 Jul 2012 16:50:49 +0200
 
 session-migration (0.1) quantal; urgency=low
 
