@@ -18,7 +18,8 @@ B<dh_migrations> [S<B<debhelper options>>] [B<-n>]
 
 B<dh_installsessionmigration> is a debhelper program that is responsible for
 installing B<session migration> files used by session-migratoin helper
-into package build directories.
+into package build directories and add a dependency of the package on
+session-migration.
 
 This helper needs the session-migration tool installed on the targeted system
 to run the different migration files
@@ -59,6 +60,10 @@ foreach my $package (@{$dh{DOPACKAGES}}) {
 			doit("install","-d","$tmp/usr/share/session-migration/scripts");
 		}
 		doit("install","-p","-m755",$script,"$tmp/usr/share/session-migration/scripts");		
+	}
+
+    if (@scripts) {
+		addsubstvar($package, "misc:Depends", "session-migration");
 	}
 }
 

@@ -73,6 +73,10 @@ class DebhelperTests(unittest.TestCase):
         self.assertTrue(os.access(os.path.join(scripts_path, "script1.sh"), os.X_OK))
         self.assertTrue(os.access(os.path.join(scripts_path, "script2.sh"), os.X_OK))
 
+        # check the dep was added:
+        with open(os.path.join(self.pkgdir, 'debian/vanilla/DEBIAN/control')) as f:
+            self.assertEquals(f.read().count("session-migration"), 1)
+
     def test_build_with_missing_script(self):
         '''ensure assert when there is a typo in the script path or doesn't exist'''
         os.remove(os.path.join(self.pkgdir, "script1.sh"))

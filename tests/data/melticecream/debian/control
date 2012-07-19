@@ -7,6 +7,13 @@ Standards-Version: 3.9.3
 
 Package: vanilla
 Architecture: all
+Depends: ${misc:Depends}
 Description: vanilla
  vanilla
+
+Package: nochocolate
+Architecture: all
+Depends: ${misc:Depends}
+Description: chocolate
+ chocolate
 
