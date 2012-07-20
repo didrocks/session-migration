@@ -1,3 +1,9 @@
+session-migration (0.2.1) UNRELEASED; urgency=low
+
+  * add more info to the manpage
+
+ -- Didier Roche <didrocks@ubuntu.com>  Fri, 20 Jul 2012 18:31:16 +0200
+
 session-migration (0.2) quantal; urgency=low
 
   * dh_migrations adds a dependency using ${misc:Depends} on the packages

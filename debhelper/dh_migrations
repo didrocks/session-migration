@@ -16,13 +16,15 @@ B<dh_migrations> [S<B<debhelper options>>] [B<-n>]
 
 =head1 DESCRIPTION
 
-B<dh_installsessionmigration> is a debhelper program that is responsible for
+B<dh_migrationis> is a debhelper program that is responsible for
 installing B<session migration> files used by session-migratoin helper
 into package build directories and add a dependency of the package on
 session-migration.
 
-This helper needs the session-migration tool installed on the targeted system
-to run the different migration files
+This helper will add in ${misc:Depends} the session-migration tool as a dependency of the 
+targeted package.
+
+Use the --with migrations sequence for debhelper 8+.
 
 =head1 FILES
 
