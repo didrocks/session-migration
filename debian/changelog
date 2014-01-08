@@ -1,6 +1,11 @@
 session-migration (0.2.1) UNRELEASED; urgency=low
 
+  [ Didier Roche ]
   * add more info to the manpage
+
+  [ Iain Lane ]
+  * Add an upstart user session script, so we can run session-migration under
+    more types of session.
 
  -- Didier Roche <didrocks@ubuntu.com>  Fri, 20 Jul 2012 18:31:16 +0200
 

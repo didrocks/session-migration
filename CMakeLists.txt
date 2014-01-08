@@ -4,6 +4,7 @@ project(user-migration)
 find_package (PkgConfig)
 pkg_check_modules (CACHED_SESSIONMIGRATION_DEPS REQUIRED "glib-2.0;gio-2.0")
 
+add_subdirectory(data)
 add_subdirectory(src)
 
 file(COPY debhelper tests
