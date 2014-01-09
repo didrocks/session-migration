@@ -1,4 +1,4 @@
-session-migration (0.2.1) UNRELEASED; urgency=low
+session-migration (0.2.1) trusty; urgency=low
 
   [ Didier Roche ]
   * add more info to the manpage
@@ -7,7 +7,7 @@ session-migration (0.2.1) UNRELEASED; urgency=low
   * Add an upstart user session script, so we can run session-migration under
     more types of session.
 
- -- Didier Roche <didrocks@ubuntu.com>  Fri, 20 Jul 2012 18:31:16 +0200
+ -- Iain Lane <iain.lane@canonical.com>  Thu, 09 Jan 2014 11:27:26 +0000
 
 session-migration (0.2) quantal; urgency=low
 
